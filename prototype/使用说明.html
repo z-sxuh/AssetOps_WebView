@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>工作台 1.2.5 · HTML 原型使用说明</title>
+  <style>
+    :root { font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', 'Segoe UI', sans-serif; color: #293d30; background: #edf4e9; font-size: 15px; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 920px; margin: 64px auto; padding: 0 28px 48px; }
+    h1 { font-size: 32px; margin: 0 0 16px; line-height: 1.4; }
+    h2 { font-size: 20px; margin: 36px 0 12px; }
+    p, li { line-height: 1.9; }
+    p { margin: 12px 0; }
+    a { color: #287a54; text-underline-offset: 4px; }
+    a:focus-visible { outline: 3px solid #287a54; outline-offset: 5px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 28px 0; }
+    .actions a { border: 1px solid #b4c9b0; border-radius: 12px; padding: 12px 18px; text-decoration: none; background: #f8fcf5; font-weight: 600; }
+    .actions a:first-child { color: #fff; background: #3c8058; border-color: #3c8058; }
+    .actions a:hover { box-shadow: 0 3px 12px #293d3018; }
+    code { padding: 2px 6px; border-radius: 5px; background: #e1eddc; font-family: Consolas, monospace; }
+    table { width: 100%; border-collapse: collapse; background: #f8fcf5; }
+    th, td { padding: 13px 16px; border-bottom: 1px solid #cdddc9; text-align: left; line-height: 1.7; }
+    th { background: #e1eddc; }
+    .note { padding: 16px 20px; background: #f8fcf5; border: 1px solid #cdddc9; border-radius: 16px; }
+    ::selection { background: #bfd8bc; color: #293d30; }
+    @media (max-width: 600px) { main { margin: 30px auto; padding: 0 20px 32px; } h1 { font-size: 26px; } th, td { padding: 10px; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>工作台 1.2.5 HTML 原型</h1>
+  <p>沿用了 1.2.5 的页面、样式、图标和组件，用于查看界面布局与操作流程。全部内容为虚构演示数据。</p>
+  <div class="actions">
+    <a href="工作台-v1.2.5-HTML原型.html">打开完整原型</a>
+    <a href="工作台-v1.2.5-HTML原型.html?gate=unlock">查看解锁界面</a>
+    <a href="工作台-v1.2.5-HTML原型.html?gate=setup">查看初始化界面</a>
+    <a href="README.md">查看源码与构建说明</a>
+  </div>
+  <div class="note">演示主密码：<code>Prototype@125</code>。原型默认自动进入系统导览；进入资产台账或系统运维后，在组织目录中选择“示例单位 → 生产环境 → 业务区 → 官网平台”。</div>
+  <h2>可以查看和操作什么</h2>
+  <table>
+    <thead><tr><th>页面</th><th>主要内容</th></tr></thead>
+    <tbody>
+      <tr><td>系统导览</td><td>资产统计、状态分布、单位统计、最近变更、密码维护、备份状态</td></tr>
+      <tr><td>资产台账</td><td>组织目录、增删改查、筛选排序、字段与列设置、账号、左侧冻结</td></tr>
+      <tr><td>系统运维</td><td>系统资料、Markdown、X6 拓扑编辑、版本记录与回滚</td></tr>
+      <tr><td>工作报告</td><td>工作记录、日历、提醒、日报/周报/月报/年报</td></tr>
+      <tr><td>字段定义</td><td>字段配置、排序、模板、导入导出</td></tr>
+      <tr><td>导入导出</td><td>Excel 预检、映射、冲突处理、导入和下载</td></tr>
+      <tr><td>历史变更</td><td>差异、筛选、回滚、审计导出、原型专用归档</td></tr>
+      <tr><td>系统备份</td><td>演示备份、恢复、删除、保留策略</td></tr>
+      <tr><td>系统设置</td><td>原版分组、主题、自动锁定、密码、快捷键、备份和技术栈</td></tr>
+    </tbody>
+  </table>
+  <h2>打开与保存</h2>
+  <p>使用桌面版 Chrome 或 Edge，直接双击 HTML 即可离线运行。推荐窗口 1440×900。已保存修改保留在当前浏览器本地存储中，刷新后仍可查看；换浏览器、移动文件或清理浏览器数据可能使用不同存储。</p>
+  <p>右上角打开搜索，或按 <code>F4</code>；底栏切换早春、晨雾、浅夜、系统主题。点击“已解锁”可锁屏，使用演示主密码解锁。初始化界面使用独立存储，不影响主原型样例。</p>
+  <h2>桌面能力的演示范围</h2>
+  <p><strong>请勿录入真实密码和业务数据。</strong> 本原型的演示数据与备份使用浏览器存储，没有正式应用的加密保险库。原型不会读取真实数据库、访问业务服务或修改 Windows 自启动、托盘、注册表。</p>
+  <p>自启动和桌面设置只保存演示状态；导出文件进入浏览器下载目录。Excel 只支持基础 .xlsx，不支持旧版 .xls 和复杂工作簿。历史 ZIP 和备份仅供原型内部演示，与正式应用格式不互通；留存清理仅按“保留最近”数量演示。离线原型不请求外部节假日接口。</p>
+  <h2>二次开发与构建</h2>
+  <p>源码保留原版 <code>src/components</code>、<code>src/features</code> 和样式文件。浏览器适配集中在 <code>prototype/</code> 中，便于在浏览器中预览与调试。在仓库根目录运行 <code>npm install</code>、<code>npm run dev</code>；执行 <code>npm run build</code> 重新生成单 HTML。</p>
+  <p><a href="README.md">完整说明与源码入口</a> · <a href="工作台-v1.2.5-HTML原型.html?reset=1">恢复全部虚构样例</a></p>
+</main>
+</body>
+</html>

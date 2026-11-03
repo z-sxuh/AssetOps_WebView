@@ -1,0 +1,20 @@
+# 依赖
+node_modules/
+
+# 构建输出
+dist/
+
+# 本地打包 / 归档
+*.zip
+*.7z
+
+# 日志与系统文件
+*.log
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 编辑器
+.vscode/
+.idea/
+*.swp

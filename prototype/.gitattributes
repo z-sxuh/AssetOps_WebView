@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
+
+# 预构建的单文件 HTML 由脚本生成
+工作台-v1.2.5-HTML原型.html linguist-generated=true

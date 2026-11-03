@@ -1,0 +1,172 @@
+:root {
+  --radius-control: 12px;
+  --radius-compact: 10px;
+  --radius-panel: 16px;
+  --radius-popup: 14px;
+  --radius-dialog: 18px;
+  --radius-popup-item: 10px;
+  --squircle-feather-edge: color-mix(in srgb, var(--ink) 12%, transparent);
+  --squircle-feather-soft: color-mix(in srgb, var(--ink) 6%, transparent);
+  --squircle-feather: 0 0 .5px var(--squircle-feather-edge), 0 0 2px var(--squircle-feather-soft);
+  --popup-shadow: inset 0 0 0 1px var(--border-soft), var(--squircle-feather), 0 12px 28px var(--shadow-raised), 0 3px 8px var(--shadow-soft);
+  --dialog-shadow: inset 0 0 0 1px var(--border-soft), var(--squircle-feather), 0 16px 48px var(--shadow-raised);
+}
+
+/* 原生角型同时绘制背景、边框和溢出边缘，不裁掉焦点环或阴影。 */
+:root :is(.ant-btn, .ant-input, .ant-input-affix-wrapper, .ant-input-group-wrapper,
+  .ant-input-number, .ant-input-number-group-wrapper, .ant-select-selector, .ant-picker,
+  .search-input-row, .ant-space-compact, .search-result, .work-calendar-day, .footer-lock,
+  .operations-archived button, .topology-edge-colors button, .gate-password .ant-input-password-icon,
+  .ant-alert, .ant-segmented, .ant-modal-close, .brand-mark, .onboarding-icon, .coming-icon, .gate-icon) {
+  --squircle-radius: var(--radius-control);
+  border-radius: var(--squircle-radius);
+  corner-shape: squircle;
+  filter: drop-shadow(0 0 .5px var(--squircle-feather-edge)) drop-shadow(0 0 2px var(--squircle-feather-soft));
+}
+
+:root :is(.ant-tag, .ant-checkbox-inner, .sidebar .ant-menu-item,
+  .ant-table-cell .ant-select-selector, .ant-table-cell .ant-btn, .ant-select-item,
+  .ant-dropdown-menu-item, .ant-dropdown-menu-submenu-title, .ant-select-tree-node-content-wrapper, .column-drag-handle,
+  .ant-menu-item, .ant-menu-submenu-title, .ant-select-multiple .ant-select-selection-item,
+  .ant-pagination-item, .ant-pagination-item-link, .ant-pagination-options-quick-jumper input, .ant-pagination-simple-pager input,
+  .ant-picker-cell-inner, .ant-picker-time-panel-cell-inner, .ant-tabs-card .ant-tabs-tab,
+  .card-title-icon, .reminder-key, .project-icon, .search-result-icon, .activity-icon,
+  .project-chart-row, .recent-change, .maintenance-list button, .tree-all,
+  .ant-segmented-item, .ant-segmented-thumb, .tree-toolbar .ant-btn, .ledger-table-pagination .ant-select-selector,
+  .ant-btn-sm, .ant-input-sm, .ant-input-affix-wrapper-sm, .ant-input-number-sm, .ant-select-sm .ant-select-selector, .ant-picker-small) {
+  --squircle-radius: var(--radius-compact);
+  border-radius: var(--squircle-radius);
+  corner-shape: squircle;
+  filter: drop-shadow(0 0 .5px var(--squircle-feather-edge)) drop-shadow(0 0 2px var(--squircle-feather-soft));
+}
+
+/* 只在组合控件最外层羽化；内层方角避免双重圆角、阴影和接缝。 */
+:root :is(.ant-input-affix-wrapper, .ant-input-group-wrapper, .ant-input-number-group-wrapper, .ant-space-compact)
+  :is(.ant-input, .ant-input-affix-wrapper, .ant-input-number, .ant-btn, .ant-select-selector) {
+  --squircle-radius: 0px;
+  border-radius: 0;
+  filter: none;
+}
+:root :is(.ant-input-group-wrapper, .ant-input-number-group-wrapper, .ant-space-compact) { overflow: hidden; }
+:root :is(.ant-input-group-wrapper, .ant-input-number-group-wrapper) { background-color: var(--inset); outline: 1px solid var(--line); outline-offset: -1px; }
+:root :is(.ant-input-group-addon, .ant-input-number-group-addon) { border-radius: 0; }
+:root :is(.ant-input-group-wrapper, .ant-input-number-group-wrapper)
+  :is(.ant-input-group-addon, .ant-input-number-group-addon):is(:first-child, :last-child) { border-radius: 0; }
+:root :is(.ant-select-selection-search-input, .ant-input-number-input) { filter: none; }
+:root textarea.ant-input { --squircle-radius: var(--radius-control); }
+:root :is(.ant-input-affix-wrapper, .ant-input-number, .ant-select-selector, .ant-picker,
+  .ant-input-group-wrapper, .ant-input-number-group-wrapper, .ant-space-compact):focus-within,
+:root input.ant-input:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--green) 40%, transparent);
+  outline-offset: 2px;
+}
+:root :is(.ant-input-affix-wrapper, .ant-input-group-wrapper, .ant-input-number-group-wrapper, .ant-space-compact)
+  :is(.ant-input, .ant-input-affix-wrapper, .ant-input-number):focus-within { outline: none; }
+
+/* 大表面的羽化合并到原有阴影，避免 filter 改变全屏编辑器的 fixed 定位参照。 */
+:root :is(.ant-card, .settings-group, .table-panel, .tree-panel, .operations-workspace, .work-record-list,
+  .markdown-tiptap, .markdown-preview, .topology-viewport, .topology-properties,
+  .work-calendar-month, .work-calendar-tasks, .dashboard-widget, .dashboard-widget-content,
+  .report-archive-list, .ant-descriptions-view, .ant-upload-drag, .project-card, .markdown-editor-loading,
+  .column-setting-list, .ant-notification-notice, .system-assets-panel,
+  .dashboard-widget-content > .work-calendar-view, .dashboard-widget-content > .embedded-reports,
+  .maintenance-summary > div, .dashboard-reminder, .markdown-tiptap-content .ProseMirror pre, .basic-markdown pre) {
+  --squircle-radius: var(--radius-panel);
+  border-radius: var(--squircle-radius);
+  corner-shape: squircle;
+  box-shadow: inset 0 1px 0 var(--highlight), inset 0 0 0 1px var(--border-soft), var(--squircle-feather), 0 8px 24px var(--shadow-soft);
+}
+:root :is(.ant-modal .ant-modal-content, .ant-drawer .ant-drawer-content) {
+  --squircle-radius: var(--radius-dialog);
+  border-radius: var(--squircle-radius);
+  corner-shape: squircle;
+  box-shadow: var(--dialog-shadow);
+}
+:root :is(.ant-select-dropdown > div, .ant-dropdown-menu, .ant-table-filter-dropdown,
+  .ant-popover-inner, .ant-picker-dropdown .ant-picker-panel-container,
+  .header-search:not(.standalone-search) .search-suggestions,
+  .standalone-search .search-surface, .topology-context-menu, .ant-message-notice-content, .ant-tooltip-inner) {
+  --squircle-radius: var(--radius-popup);
+  border-radius: var(--squircle-radius);
+  corner-shape: squircle;
+  box-shadow: var(--popup-shadow);
+}
+:root .theme-switch-popover .ant-popover-inner { --squircle-radius: var(--radius-popup); }
+:root .ant-table-filter-dropdown .ant-dropdown-menu { --squircle-radius: 0px; border-radius: 0; box-shadow: none; }
+:root .standalone-search .search-input-row { --squircle-radius: 0px; border-radius: 0; filter: none; }
+:root .standalone-search .search-suggestions { --squircle-radius: 0px; }
+:root .ant-table-wrapper .ant-table-thead > tr:first-child > th:first-child { border-start-start-radius: var(--radius-compact); corner-start-start-shape: squircle; }
+:root .ant-table-wrapper .ant-table-thead > tr:first-child > th:last-child { border-start-end-radius: var(--radius-compact); corner-start-end-shape: squircle; }
+:root .ant-table-container { border-radius: var(--radius-compact); corner-shape: squircle; box-shadow: var(--squircle-feather); }
+:root .backup-pagination { border-radius: 0 0 var(--radius-panel) var(--radius-panel); corner-shape: squircle; }
+:root .backup-page .backup-scroll-content .fixed-table-card { border-end-start-radius: 0; border-end-end-radius: 0; }
+:root .backup-scroll-content .fixed-table-card .ant-table-container { border-radius: 0; box-shadow: none; }
+:root :is(.topology-controls, .topology-overview, .topology-help) {
+  --squircle-radius: var(--radius-popup);
+  border-radius: var(--squircle-radius);
+  corner-shape: squircle;
+  box-shadow: var(--squircle-feather);
+}
+:root :is(kbd, .search-escape, .search-result-copy mark, .markdown-tiptap-content .ProseMirror code,
+  .basic-markdown code) {
+  --squircle-radius: var(--radius-compact);
+  border-radius: var(--squircle-radius);
+  corner-shape: squircle;
+  box-shadow: var(--squircle-feather);
+}
+/* 同一个表面的内部接缝沿用外层曲率，不重复叠加羽化。 */
+:root .dashboard-widget { border-radius: var(--radius-panel); corner-shape: squircle; }
+:root .ant-card-head { border-start-start-radius: inherit; border-start-end-radius: inherit; corner-shape: inherit; }
+:root .ant-modal-header { border-start-start-radius: inherit; border-start-end-radius: inherit; corner-shape: inherit; }
+:root :is(.ant-card-body:last-child, .ant-card-actions) { border-end-start-radius: inherit; border-end-end-radius: inherit; corner-shape: inherit; }
+:root .ant-input-number-handler-wrap { border-radius: inherit; corner-shape: inherit; }
+:root :is(.ant-input-number-handler, .ant-picker-cell-inner::before) { corner-shape: inherit; }
+:root :is(.ant-table-header, .ant-select-tree-switcher::before) { corner-shape: squircle; }
+:root .topology-squircle { filter: drop-shadow(0 0 .5px var(--squircle-feather-edge)) drop-shadow(0 0 2px var(--squircle-feather-soft)); }
+:root :is(.topology-node, .topology-region):focus { outline: none; }
+:root .topology-node:focus-visible > .topology-node-surface { stroke: var(--blue); stroke-width: 3px; }
+:root .topology-region:focus-visible > .topology-region-surface { stroke: var(--blue) !important; stroke-width: 3px; }
+:root .markdown-tiptap-content .ProseMirror pre code, :root .basic-markdown pre code {
+  --squircle-radius: 0px;
+  border-radius: 0;
+  box-shadow: none;
+}
+/* 无边框输入复用外壳，避免通用焦点样式生成第二层框线。 */
+:root .gate-page .gate-card.gate-unlock {
+  --squircle-radius: 0px;
+  background: transparent !important;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  filter: none;
+}
+:root .gate-unlock .gate-password.ant-input-affix-wrapper {
+  --squircle-radius: 24px;
+  padding: 0 8px 0 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+:root .gate-unlock .gate-password.ant-input-affix-wrapper:focus-within { border-color: var(--green); outline-offset: 0; }
+:root .search-input-row .ant-input-affix-wrapper, :root .search-input-row input.ant-input {
+  --squircle-radius: 0px;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  filter: none;
+}
+:root .search-input-row:focus-within { border-color: var(--green); }
+/* 字段表格只由最外层卡片裁出轮廓，内层直边不再叠加圆角阴影。 */
+:root .fields-table-card { overflow: hidden; }
+:root .fields-table-card .ant-card-body { border-radius: 0; }
+:root :is(.fields-table-card .ant-table-container, .ledger-table .ant-table-container) { border-radius: 0; box-shadow: none; }
+:root .fields-table-card .fields-table .ant-table-header { border-start-start-radius: 0 !important; border-start-end-radius: 0 !important; }
+
+/* SVG 只绘制旧 WebView 的表面，不裁内容；原生交互和外部阴影仍在原元素上。 */
+:root [data-squircle-svg] {
+  border-width: var(--squircle-border-width) !important;
+  border-style: solid !important;
+  border-image: var(--squircle-image) 0 fill / 0 !important;
+  background-clip: text !important;
+}

@@ -1,0 +1,103 @@
+/* 浮层的可见表面统一外观；定位、开关动效与蒙版仍由原有组件处理。 */
+:root {
+  --popup-shadow: inset 0 0 0 1px var(--border-soft), 0 12px 28px var(--shadow-raised), 0 3px 8px var(--shadow-soft);
+  --dialog-shadow: inset 0 0 0 1px var(--border-soft), 0 16px 48px var(--shadow-raised);
+}
+
+:root .ant-select-dropdown {
+  padding: 0 !important;
+  border-radius: var(--radius-popup);
+  overflow: visible;
+  background: transparent !important;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:root :is(
+  .ant-select-dropdown > div,
+  .ant-dropdown-menu,
+  .ant-table-filter-dropdown,
+  .ant-popover-inner,
+  .ant-picker-dropdown .ant-picker-panel-container,
+  .header-search:where(:not(.standalone-search)) .search-suggestions,
+  .standalone-search .search-surface,
+  .topology-context-menu
+) {
+  border: 0;
+  border-radius: var(--radius-popup);
+  background: var(--surface) !important;
+  box-shadow: var(--popup-shadow);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+:root :is(.ant-select-dropdown > div, .ant-dropdown-menu) { padding: 6px; }
+:root .theme-switch-popover .ant-popover-inner { padding: 4px; border-radius: 8px; }
+:root .ant-popover { --antd-arrow-background-color: var(--surface); }
+:root .floating-scrollbar { z-index: 900; }
+
+/* 表头筛选只保留一层表面，内层菜单和操作区不再叠加阴影。 */
+:root .ant-table-filter-dropdown .ant-dropdown-menu {
+  border-radius: 0;
+  background: transparent !important;
+  box-shadow: none;
+}
+:root .ant-table-filter-dropdown-btns { border-top-color: var(--line); }
+
+:root :is(.ant-select-item, .ant-dropdown-menu-item, .ant-dropdown-menu-submenu-title, .ant-select-tree-node-content-wrapper) {
+  border-radius: var(--radius-popup-item);
+}
+:root :is(.ant-select-item-option-selected:not(.ant-select-item-option-disabled), .ant-select-tree-node-selected, .ant-dropdown-menu-item-selected) {
+  color: var(--ink);
+  background: var(--selection) !important;
+}
+
+:root :is(.ant-modal .ant-modal-content, .ant-drawer .ant-drawer-content) {
+  border: 0;
+  border-radius: var(--radius-dialog);
+  box-shadow: var(--dialog-shadow);
+}
+:root .ant-drawer .ant-drawer-content-wrapper { box-shadow: none; }
+:root :is(.ant-modal-title, .ant-modal-confirm-title, .ant-drawer-title) {
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+:root .ant-modal-confirm-paragraph { row-gap: 12px; }
+:root :is(.ant-modal-footer, .ant-modal-confirm-btns) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+:root .ant-modal-footer > .ant-space {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 100%;
+}
+:root :is(.ant-modal-footer, .ant-modal-confirm-btns) .ant-btn {
+  min-height: 32px;
+  max-width: 100%;
+  height: auto;
+  font-size: 14px;
+  white-space: normal;
+}
+:root :is(.ant-modal-footer, .ant-modal-confirm-btns) .ant-btn + .ant-btn { margin-inline-start: 0; }
+:root .ant-modal-content:has(> .ant-modal-body:empty) .ant-modal-footer {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+@supports (corner-shape: squircle) {
+  :is(.ant-select-dropdown > div, .ant-dropdown-menu, .ant-table-filter-dropdown, .ant-popover-inner,
+    .ant-picker-dropdown .ant-picker-panel-container, .search-suggestions, .standalone-search .search-surface, .topology-context-menu) {
+    corner-shape: squircle;
+  }
+}
